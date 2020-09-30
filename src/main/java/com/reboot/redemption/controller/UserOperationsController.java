@@ -6,7 +6,6 @@ import com.reboot.redemption.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.File;
@@ -23,8 +22,8 @@ public class UserOperationsController {
     }
 
     @ResponseBody
-    @GetMapping("/")
-    public String index() throws IOException {
+    @GetMapping("/generate/test-user")
+    public String generateTestUser() throws IOException {
         UserInfoDto userInfoDto = new ObjectMapper()
                 .readerFor(UserInfoDto.class)
                 .readValue(

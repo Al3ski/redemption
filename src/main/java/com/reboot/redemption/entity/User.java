@@ -4,17 +4,18 @@ import lombok.Data;
 import lombok.NonNull;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 import java.util.Date;
 
 @Entity
-@Table(name = "USER")
+@Table(name = "USERS")
 @Data
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id", nullable = false, unique = true)
-    private Long id;
+    private BigInteger id;
 
     @NonNull
     @Column(name = "name", nullable = false)

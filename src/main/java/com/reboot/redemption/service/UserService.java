@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.Optional;
 
 @Slf4j
@@ -19,7 +20,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public Long createUser(UserInfoDto userInfoDto) {
+    public BigInteger createUser(UserInfoDto userInfoDto) {
         User user = new User(
                 userInfoDto.getInitialName(),
                 userInfoDto.getInitialSurname(),
