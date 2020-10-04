@@ -1,8 +1,9 @@
-package com.reboot.redemption.controller;
+package com.reboot.redemption.mvc.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.reboot.redemption.dto.UserInfoDto;
-import com.reboot.redemption.service.UserService;
+import com.reboot.redemption.mvc.dto.UserInfoDto;
+import com.reboot.redemption.mvc.entity.User;
+import com.reboot.redemption.mvc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,7 @@ import java.io.IOException;
 @Controller
 public class UserOperationsController {
 
-    private UserService userService;
+    private final UserService userService;
 
     @Autowired
     public UserOperationsController(UserService userService) {
@@ -31,6 +32,6 @@ public class UserOperationsController {
                         UserInfoDto.class
                 );
 
-        return userService.createUser(userInfoDto).toString();
+        return userService.createUser(new User(userInfoDto)).toString();
     }
 }

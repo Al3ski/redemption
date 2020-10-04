@@ -1,9 +1,9 @@
 package com.reboot.redemption.dto;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.reboot.redemption.mvc.dto.UserInfoDto;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +11,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 
-@SpringBootTest
 public class UserInfoDtoTest {
 
     @Test
@@ -19,8 +18,7 @@ public class UserInfoDtoTest {
         UserInfoDto userInfoDto = new ObjectMapper()
                 .readerFor(UserInfoDto.class)
                 .readValue(
-                        new File("src/test/resources/dto/user_info_dto_test.json"),
-                        UserInfoDto.class
+                        new File("src/test/resources/dto/user_info_dto_test.json")
                 );
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");

@@ -1,6 +1,6 @@
-package com.reboot.redemption.repository;
+package com.reboot.redemption.mvc.repository;
 
-import com.reboot.redemption.entity.User;
+import com.reboot.redemption.mvc.entity.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

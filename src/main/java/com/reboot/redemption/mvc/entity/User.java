@@ -1,16 +1,25 @@
-package com.reboot.redemption.entity;
+package com.reboot.redemption.mvc.entity;
 
+import com.reboot.redemption.mvc.dto.UserInfoDto;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NonNull;
 
 import javax.persistence.*;
 import java.math.BigInteger;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "USERS")
 @Data
 public class User {
+
+    public User(UserInfoDto userInfoDto) {
+        this.name = userInfoDto.getInitialName();
+        this.surname = userInfoDto.getInitialSurname();
+        this.birthday = userInfoDto.getBirthday();
+        this.email = userInfoDto.getInitialEmail();
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,7 +37,7 @@ public class User {
     @NonNull
     @Temporal(TemporalType.DATE)
     @Column(name = "birthday", nullable = false)
-    private Date birthday;
+    private LocalDate birthday;
 
     @Column(name = "email")
     private String email;
