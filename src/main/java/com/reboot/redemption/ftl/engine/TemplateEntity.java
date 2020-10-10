@@ -4,17 +4,22 @@ import lombok.Data;
 import lombok.NonNull;
 
 import javax.persistence.*;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.UUID;
 
-@Entity
+@Entity(name = "FTL_TEMPLATES")
 @Table(name = "FTL_TEMPLATES")
 @Data
 public class TemplateEntity {
+    public static TemplateEntity DUMMY_TEMPLATE = new TemplateEntity(
+            "EMPTY",
+            "EMPTY",
+            0
+    );
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id", nullable = false, unique = true)
-    private int id;
+    @Column(name = "id", columnDefinition = "UUID", nullable = false, unique = true)
+    private UUID id;
 
     @NonNull
     @Column(name = "template_name", nullable = false)

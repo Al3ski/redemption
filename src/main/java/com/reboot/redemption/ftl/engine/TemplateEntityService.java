@@ -9,4 +9,6 @@ public interface TemplateEntityService {
     TemplateEntity loadTemplate(String templateName);
 
     void deleteTemplate(String templateName);
+
+    boolean isDummyTemplate(TemplateEntity templateEntity);
 }

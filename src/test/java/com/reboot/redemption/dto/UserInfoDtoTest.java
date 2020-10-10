@@ -8,8 +8,9 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.TimeZone;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 
 public class UserInfoDtoTest {
 
@@ -21,12 +22,12 @@ public class UserInfoDtoTest {
                         new File("src/test/resources/dto/user_info_dto_test.json")
                 );
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        dateTimeFormatter.withZone(ZoneId.of("UTC"));
 
         Assertions.assertEquals(userInfoDto.getInitialName(), "test_user#1");
         Assertions.assertEquals(userInfoDto.getInitialSurname(), "test_surname#1");
         Assertions.assertEquals(userInfoDto.getInitialEmail(), "test_email@test.test");
-        Assertions.assertEquals(userInfoDto.getBirthday(), dateFormat.parse("09.05.1990"));
+        Assertions.assertEquals(userInfoDto.getBirthday(), LocalDate.parse("09.05.1990", dateTimeFormatter));
     }
 }

@@ -16,10 +16,12 @@ public class FreemarkerConfig {
     }
 
     @Bean
-    public FreeMarkerConfigurer freeMarkerConfigurer(){
+    public FreeMarkerConfigurer freeMarkerConfigurer() {
         FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
-        freeMarkerConfigurer.setTemplateLoaderPath("classpath:/templates"); //defines the classpath location of the freemarker templates
-        freeMarkerConfigurer.setDefaultEncoding("UTF-8"); // Default encoding of the template files
+        freemarker.template.Configuration freemarkerConfig = new freemarker.template.Configuration(freemarker.template.Configuration.VERSION_2_3_30);
+        freemarkerConfig.setClassForTemplateLoading(this.getClass(), "/templates");
+        freemarkerConfig.setDefaultEncoding("UTF-8");
+        freeMarkerConfigurer.setConfiguration(freemarkerConfig);
         return freeMarkerConfigurer;
     }
 }

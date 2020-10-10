@@ -33,4 +33,11 @@ public class TemplateEntityServiceImpl implements TemplateEntityService {
         logger.debug("Deleting Template Entity with name: {}", templateName);
         templateEntityRepository.deleteTemplateEntityByTemplateName(templateName);
     }
+
+    @Override
+    public boolean isDummyTemplate(TemplateEntity templateEntity) {
+        return "EMPTY".equals(templateEntity.getTemplateName())
+                && "EMPTY".equals(templateEntity.getTemplateBody())
+                && 0 == templateEntity.getVersion();
+    }
 }

@@ -1,15 +1,14 @@
 package com.reboot.redemption.mvc.entity;
 
 import com.reboot.redemption.mvc.dto.UserInfoDto;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NonNull;
 
 import javax.persistence.*;
-import java.math.BigInteger;
 import java.time.LocalDate;
+import java.util.UUID;
 
-@Entity
+@Entity(name = "USERS")
 @Table(name = "USERS")
 @Data
 public class User {
@@ -22,9 +21,9 @@ public class User {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_id", nullable = false, unique = true)
-    private BigInteger id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id", columnDefinition = "UUID", nullable = false, unique = true)
+    private UUID id;
 
     @NonNull
     @Column(name = "name", nullable = false)
@@ -35,8 +34,7 @@ public class User {
     private String surname;
 
     @NonNull
-    @Temporal(TemporalType.DATE)
-    @Column(name = "birthday", nullable = false)
+    @Column(name = "birthday", columnDefinition = "DATE", nullable = false)
     private LocalDate birthday;
 
     @Column(name = "email")
